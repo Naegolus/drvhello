@@ -1,3 +1,8 @@
 
 Install kernel headers
 sudo apt-get install linux-headers-$(uname -r)
+sudo apt-get install raspberrypi-kernel-headers
+sudo apt-get install --reinstall raspberrypi-bootloader
+
+sudo make
+sudo insmod drvhello.o
