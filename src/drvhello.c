@@ -16,6 +16,6 @@ static void drvhello_exit(void) {
 module_init(drvhello_init);
 module_exit(drvhello_exit);
 
-MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Johannes Natter");
 MODULE_DESCRIPTION("Linux driver hello world");
+MODULE_LICENSE("GPL");
