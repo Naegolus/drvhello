@@ -1,4 +1,6 @@
 
+https://www.kernel.org/doc/Documentation/kbuild/modules.txt
+
 Install kernel headers
 sudo apt-get install linux-headers-$(uname -r)
 sudo apt-get install raspberrypi-kernel-headers
