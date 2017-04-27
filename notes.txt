@@ -10,3 +10,6 @@ lsmod
 sudo rmmod drvhello
 
 cat /var/log/syslog | tail
+
+https://www.kernel.org/doc/Documentation/gpio/
+https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/
