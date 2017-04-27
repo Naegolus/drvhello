@@ -8,3 +8,5 @@ sudo make
 sudo insmod drvhello.o
 lsmod
 sudo rmmod drvhello
+
+cat /var/log/syslog | tail
