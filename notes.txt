@@ -15,3 +15,38 @@ cat /var/log/syslog | tail
 
 https://www.kernel.org/doc/Documentation/gpio/
 https://www.kernel.org/doc/Documentation/devicetree/bindings/gpio/
+
+File: bcm2708_common.dtsi in arch/arm/boot/dts/
+		gpio: gpio@7e200000 {
+			compatible = "brcm,bcm2835-gpio";
+			reg = <0x7e200000 0xb4>;
+			interrupts = <2 17>, <2 18>;
+
+			gpio-controller;
+			#gpio-cells = <2>;
+
+			interrupt-controller;
+			#interrupt-cells = <2>;
+		};
+
+File: pinctrl-bcm2835.c in drivers/pinctrl/bcm/
+static const struct of_device_id bcm2835_pinctrl_match[] = {
+	{ .compatible = "brcm,bcm2835-gpio" },
+	{}
+};
+MODULE_DEVICE_TABLE(of, bcm2835_pinctrl_match);
+
+static struct platform_driver bcm2835_pinctrl_driver = {
+	.probe = bcm2835_pinctrl_probe,
+	.remove = bcm2835_pinctrl_remove,
+	.driver = {
+		.name = MODULE_NAME,
+		.owner = THIS_MODULE,
+		.of_match_table = bcm2835_pinctrl_match,
+	},
+};
+module_platform_driver(bcm2835_pinctrl_driver);
+
+MODULE_AUTHOR("Chris Boot, Simon Arlott, Stephen Warren");
+MODULE_DESCRIPTION("BCM2835 Pin control driver");
+MODULE_LICENSE("GPL");
